@@ -1,0 +1,70 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar >
+    <ion-title>Add Journal entry & Activity</ion-title>
+    <ion-icon name="close" slot="end" size="larger" class="ion-padding" (click)="dismis()"></ion-icon>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content >
+ <ion-card>
+  <ion-item>
+    <ion-textarea [(ngModel)]="itemJournal" placeholder="Journal Entry"></ion-textarea>
+  </ion-item>
+
+  <ion-item>
+  <ion-label >Pick your Activity</ion-label>
+  <ion-select [(ngModel)]="itemActivities">
+    <ion-select-option value="Take a walk">Take a walk</ion-select-option>
+    <ion-select-option value="Drink water">Drink water</ion-select-option>
+    <ion-select-option value="Read a book">Read a book</ion-select-option>
+    <ion-select-option value="Exercise">Exercise</ion-select-option>
+    <ion-select-option value="Paint">Paint</ion-select-option>
+    <ion-select-option value="Listen to music">Listen to music</ion-select-option>
+    <ion-select-option value="Play an instrument">Play an instrument</ion-select-option>
+    <ion-select-option value="Take a nap">Take a nap</ion-select-option>
+  </ion-select>
+ </ion-item>
+
+   <ion-item>
+     <ion-label >Status</ion-label>
+     <ion-select [(ngModel)]="itemStatus">
+       <ion-select-option value="Ongoing">Ongoing</ion-select-option>
+       <ion-select-option value="Completed">Completed</ion-select-option>
+       
+      </ion-select>
+   </ion-item>
+  
+   <ion-item>
+     <ion-icon name="calendar-outline"slot="start"></ion-icon>
+     <ion-label >Start Date and Time </ion-label>
+     <ion-datetime [(ngModel)]="itemStartDate"  displayFormat="D MMM YYYY H:mm"></ion-datetime>
+   </ion-item>
+ 
+
+   <ion-item>
+     <ion-icon name="pricetag-outline" slot="start"></ion-icon>
+     <ion-label> Category</ion-label>
+     <span>{{categorySelectedCategory}}</span>
+   </ion-item>
+ 
+   <ion-item>
+     <ion-chip  *ngFor="let tag of categories; let i = index" color="secondary" outline="true" (click)="selectCategory(i)">
+       <ion-label color="secondary">{{tag}}</ion-label>
+     </ion-chip>
+ 
+     <ion-chip color="primary" outline="true">
+       <ion-label color="secondary">new</ion-label>
+       <ion-button fill="clear">
+         <ion-icon slot="icon-only" name="add-outline"></ion-icon>
+       </ion-button>
+     </ion-chip>
+   </ion-item>
+
+   <ion-button class="ion-margin" expand="block" (click)="add()">Add Task</ion-button>
+
+  
+ 
+
+    </ion-card>
+</ion-content>
